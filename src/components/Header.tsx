@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Search, ShoppingBag, User, Menu, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import logo from "@/assets/logo-transparent.png";
+import LanguageSelector from "@/components/LanguageSelector";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -46,19 +47,21 @@ const Header = () => {
           </Link>
 
           {/* Right Icons */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 md:gap-4">
             <button
               className="p-2 text-foreground hover:text-primary transition-colors"
               aria-label="Search"
             >
               <Search size={20} />
             </button>
-            <button
+            <LanguageSelector />
+            <Link
+              to="/login"
               className="hidden md:flex p-2 text-foreground hover:text-primary transition-colors"
               aria-label="Account"
             >
               <User size={20} />
-            </button>
+            </Link>
             <button
               className="relative p-2 text-foreground hover:text-primary transition-colors"
               aria-label="Cart"
