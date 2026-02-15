@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Globe } from "lucide-react";
 import {
   DropdownMenu,
@@ -6,16 +5,16 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useLanguage } from "@/i18n/LanguageContext";
+import { Language } from "@/i18n/translations";
 
 const languages = [
-  { code: "es", label: "Español", flag: "🇪🇸" },
-  { code: "en", label: "English", flag: "🇬🇧" },
+  { code: "es" as Language, label: "Español", flag: "🇪🇸" },
+  { code: "en" as Language, label: "English", flag: "🇬🇧" },
 ];
 
 const LanguageSelector = () => {
-  const [currentLang, setCurrentLang] = useState("es");
-
-  const currentLanguage = languages.find((lang) => lang.code === currentLang);
+  const { language, setLanguage } = useLanguage();
 
   return (
     <DropdownMenu>
@@ -26,7 +25,7 @@ const LanguageSelector = () => {
         >
           <Globe size={20} />
           <span className="hidden sm:inline text-sm font-sans tracking-wide uppercase">
-            {currentLanguage?.code}
+            {language}
           </span>
         </button>
       </DropdownMenuTrigger>
@@ -37,9 +36,9 @@ const LanguageSelector = () => {
         {languages.map((lang) => (
           <DropdownMenuItem
             key={lang.code}
-            onClick={() => setCurrentLang(lang.code)}
+            onClick={() => setLanguage(lang.code)}
             className={`flex items-center gap-3 cursor-pointer ${
-              currentLang === lang.code ? "text-primary" : "text-foreground"
+              language === lang.code ? "text-primary" : "text-foreground"
             }`}
           >
             <span className="text-lg">{lang.flag}</span>
