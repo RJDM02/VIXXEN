@@ -52,6 +52,16 @@ export const translations: Record<Language, Record<string, string>> = {
     "footer.contact": "Contáctanos",
     "footer.followUs": "Síguenos",
     "footer.rights": "© 2025 by Vixxen Company. Todos los Derechos Reservados.",
+
+    // Search
+    "search.placeholder": "Buscar productos...",
+    "search.noResults": "No se encontraron resultados.",
+
+    // Cart
+    "cart.title": "Tu Carrito",
+    "cart.empty": "Tu carrito está vacío",
+    "cart.subtotal": "Subtotal",
+    "cart.checkout": "Ir a Pagar",
     "footer.privacy": "Política de Privacidad",
     "footer.terms": "Términos de Servicio",
 
@@ -146,6 +156,16 @@ export const translations: Record<Language, Record<string, string>> = {
     "footer.contact": "Contact Us",
     "footer.followUs": "Follow Us",
     "footer.rights": "© 2025 by Vixxen Company. All Rights Reserved.",
+
+    // Search
+    "search.placeholder": "Search products...",
+    "search.noResults": "No results found.",
+
+    // Cart
+    "cart.title": "Your Cart",
+    "cart.empty": "Your cart is empty",
+    "cart.subtotal": "Subtotal",
+    "cart.checkout": "Checkout",
     "footer.privacy": "Privacy Policy",
     "footer.terms": "Terms of Service",
 
