@@ -10,7 +10,7 @@ import { Language } from "@/i18n/translations";
 
 const languages = [
   { code: "es" as Language, label: "Español", flag: "🇪🇸" },
-  { code: "en" as Language, label: "English", flag: "🇬🇧" },
+  { code: "en" as Language, label: "English", flag: "🇺🇸" },
 ];
 
 const LanguageSelector = () => {
