@@ -10,7 +10,7 @@ import { Language } from "@/i18n/translations";
 
 const languages = [
   { code: "es" as Language, label: "Español", flag: "🇪🇸" },
-  { code: "en" as Language, label: "English", flag: "🇺🇸" },
+  { code: "en" as Language, label: "English (US)", flag: "🇺🇸" },
 ];
 
 const LanguageSelector = () => {
@@ -25,7 +25,7 @@ const LanguageSelector = () => {
         >
           <Globe size={20} />
           <span className="hidden sm:inline text-sm font-sans tracking-wide uppercase">
-            {language}
+            {language === "en" ? "US" : language}
           </span>
         </button>
       </DropdownMenuTrigger>
