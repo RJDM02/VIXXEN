@@ -1,12 +1,8 @@
 import ProductCard from "./ProductCard";
 import { useLanguage } from "@/i18n/LanguageContext";
+import { allProducts } from "@/data/products";
 
-const products = [
-  { id: 1, name: "Sculpting Bodysuit", price: 89, image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=500&q=80", category: "Shapewear", badgeKey: "product.badge.new" },
-  { id: 2, name: "High-Waist Leggings", price: 65, originalPrice: 85, image: "https://images.unsplash.com/photo-1506629082955-511b1aa562c8?w=500&q=80", category: "Activewear", badgeKey: "product.badge.sale" },
-  { id: 3, name: "Sports Bra Elite", price: 55, image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500&q=80", category: "Activewear" },
-  { id: 4, name: "Waist Trainer Pro", price: 79, image: "https://images.unsplash.com/photo-1594381898411-846e7d193883?w=500&q=80", category: "Shapewear", badgeKey: "product.badge.bestseller" },
-];
+const products = allProducts.slice(0, 4);
 
 const FeaturedProducts = () => {
   const { t } = useLanguage();

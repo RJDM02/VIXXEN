@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Heart } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
+import { useCart } from "@/context/CartContext";
 
 interface ProductCardProps {
   id: number;
@@ -12,10 +13,11 @@ interface ProductCardProps {
   badge?: string;
 }
 
-const ProductCard = ({ name, price, originalPrice, image, category, badge }: ProductCardProps) => {
+const ProductCard = ({ id, name, price, originalPrice, image, category, badge }: ProductCardProps) => {
   const [isLiked, setIsLiked] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const { t } = useLanguage();
+  const { addToCart } = useCart();
 
   const discount = originalPrice ? Math.round(((originalPrice - price) / originalPrice) * 100) : 0;
 
@@ -40,7 +42,13 @@ const ProductCard = ({ name, price, originalPrice, image, category, badge }: Pro
           <Heart size={16} fill={isLiked ? "currentColor" : "none"} />
         </button>
         <div className={`absolute bottom-0 left-0 right-0 p-4 transition-all duration-300 ${isHovered ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
-          <button className="w-full py-3 bg-primary text-primary-foreground font-sans text-sm tracking-widest uppercase hover:bg-gold-dark transition-colors">
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              addToCart({ id, name, price, originalPrice, image, category });
+            }}
+            className="w-full py-3 bg-primary text-primary-foreground font-sans text-sm tracking-widest uppercase hover:bg-gold-dark transition-colors"
+          >
             {t("product.addToCart")}
           </button>
         </div>
