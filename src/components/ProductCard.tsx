@@ -1,8 +1,10 @@
 import { useState } from "react";
-import { Heart } from "lucide-react";
+import { Heart, Share2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { useCart } from "@/context/CartContext";
+import { shareProduct } from "@/lib/share";
+import { toast } from "sonner";
 
 interface ProductCardProps {
   id: number;
@@ -36,13 +38,26 @@ const ProductCard = ({ id, name, price, originalPrice, image, category, badge }:
             {badge}
           </span>
         )}
-        <button
-          onClick={(e) => { e.stopPropagation(); setIsLiked(!isLiked); }}
-          className={`absolute top-4 right-4 w-9 h-9 rounded-full flex items-center justify-center transition-all duration-300 ${isHovered || isLiked ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2"} ${isLiked ? "bg-primary text-primary-foreground" : "bg-background/80 text-foreground hover:bg-primary hover:text-primary-foreground"}`}
-          aria-label="Add to wishlist"
-        >
-          <Heart size={16} fill={isLiked ? "currentColor" : "none"} />
-        </button>
+        <div className={`absolute top-4 right-4 flex flex-col gap-2 transition-all duration-300 ${isHovered || isLiked ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2"}`}>
+          <button
+            onClick={(e) => { e.preventDefault(); e.stopPropagation(); setIsLiked(!isLiked); }}
+            className={`w-9 h-9 rounded-full flex items-center justify-center transition-all ${isLiked ? "bg-primary text-primary-foreground" : "bg-background/80 text-foreground hover:bg-primary hover:text-primary-foreground"}`}
+            aria-label="Add to wishlist"
+          >
+            <Heart size={16} fill={isLiked ? "currentColor" : "none"} />
+          </button>
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              shareProduct(id, name).then(() => toast(t("product.shared")));
+            }}
+            className="w-9 h-9 rounded-full flex items-center justify-center bg-background/80 text-foreground hover:bg-primary hover:text-primary-foreground transition-all"
+            aria-label="Share"
+          >
+            <Share2 size={16} />
+          </button>
+        </div>
         <div className={`absolute bottom-0 left-0 right-0 p-4 transition-all duration-300 ${isHovered ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
           <button
             onClick={(e) => {

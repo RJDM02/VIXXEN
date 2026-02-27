@@ -1,7 +1,9 @@
-import { X, Minus, Plus, Trash2, ShoppingBag } from "lucide-react";
+import { Minus, Plus, Trash2, ShoppingBag, Share2 } from "lucide-react";
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { useCart } from "@/context/CartContext";
 import { useLanguage } from "@/i18n/LanguageContext";
+import { shareProduct } from "@/lib/share";
+import { toast } from "sonner";
 
 const CartSidebar = () => {
   const { items, removeFromCart, updateQuantity, totalItems, totalPrice, isCartOpen, setIsCartOpen } = useCart();
@@ -62,12 +64,21 @@ const CartSidebar = () => {
                       </span>
                     </div>
                   </div>
-                  <button
-                    onClick={() => removeFromCart(item.product.id)}
-                    className="self-start p-1 text-muted-foreground hover:text-destructive transition-colors opacity-0 group-hover:opacity-100"
-                  >
-                    <Trash2 size={14} />
-                  </button>
+                  <div className="self-start flex flex-col gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <button
+                      onClick={() => shareProduct(item.product.id, item.product.name).then(() => toast(t("product.shared")))}
+                      className="p-1 text-muted-foreground hover:text-primary transition-colors"
+                      aria-label="Share"
+                    >
+                      <Share2 size={14} />
+                    </button>
+                    <button
+                      onClick={() => removeFromCart(item.product.id)}
+                      className="p-1 text-muted-foreground hover:text-destructive transition-colors"
+                    >
+                      <Trash2 size={14} />
+                    </button>
+                  </div>
                 </div>
               ))}
             </div>

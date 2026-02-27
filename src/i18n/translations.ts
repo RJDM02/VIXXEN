@@ -86,6 +86,8 @@ export const translations: Record<Language, Record<string, string>> = {
     "product.size": "Talla",
     "product.color": "Color",
     "product.related": "Productos Relacionados",
+    "product.share": "Compartir",
+    "product.shared": "¡Enlace copiado!",
     "nav.home": "Inicio",
 
     // Login
@@ -201,6 +203,8 @@ export const translations: Record<Language, Record<string, string>> = {
     "product.size": "Size",
     "product.color": "Color",
     "product.related": "Related Products",
+    "product.share": "Share",
+    "product.shared": "Link copied!",
     "nav.home": "Home",
 
     // Login
