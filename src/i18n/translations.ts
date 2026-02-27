@@ -77,6 +77,17 @@ export const translations: Record<Language, Record<string, string>> = {
     "shop.products": "productos",
     "shop.noProducts": "No se encontraron productos en esta categoría.",
 
+    // Product Detail
+    "product.notFound": "Producto no encontrado",
+    "product.backToShop": "Volver a la tienda",
+    "product.reviews": "reseñas",
+    "product.defaultDescription": "Producto premium diseñado para potenciar cada uno de tus movimientos.",
+    "product.material": "Material",
+    "product.size": "Talla",
+    "product.color": "Color",
+    "product.related": "Productos Relacionados",
+    "nav.home": "Inicio",
+
     // Login
     "login.title": "Iniciar Sesión",
     "login.subtitle": "Bienvenida de vuelta a VIXXEN",
@@ -180,6 +191,17 @@ export const translations: Record<Language, Record<string, string>> = {
     "shop.showing": "Showing",
     "shop.products": "products",
     "shop.noProducts": "No products found in this category.",
+
+    // Product Detail
+    "product.notFound": "Product not found",
+    "product.backToShop": "Back to shop",
+    "product.reviews": "reviews",
+    "product.defaultDescription": "Premium product designed to empower your every move.",
+    "product.material": "Material",
+    "product.size": "Size",
+    "product.color": "Color",
+    "product.related": "Related Products",
+    "nav.home": "Home",
 
     // Login
     "login.title": "Sign In",

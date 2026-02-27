@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Heart } from "lucide-react";
+import { Link } from "react-router-dom";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { useCart } from "@/context/CartContext";
 
@@ -22,8 +23,9 @@ const ProductCard = ({ id, name, price, originalPrice, image, category, badge }:
   const discount = originalPrice ? Math.round(((originalPrice - price) / originalPrice) * 100) : 0;
 
   return (
-    <div
-      className="group relative bg-card border border-border overflow-hidden cursor-pointer transition-all duration-300 hover:border-primary hover:-translate-y-1"
+    <Link
+      to={`/product/${id}`}
+      className="group relative bg-card border border-border overflow-hidden cursor-pointer transition-all duration-300 hover:border-primary hover:-translate-y-1 block"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -66,7 +68,7 @@ const ProductCard = ({ id, name, price, originalPrice, image, category, badge }:
           )}
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
