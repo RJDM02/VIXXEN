@@ -1,13 +1,17 @@
 import { useState } from "react";
 import { Search, ShoppingBag, User } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import logo from "@/assets/logo-transparent.png";
 import LanguageSelector from "@/components/LanguageSelector";
 import SearchDialog from "@/components/SearchDialog";
 import CartSidebar from "@/components/CartSidebar";
 import { useCart } from "@/context/CartContext";
 
-const Header = () => {
+interface HeaderProps {
+  showSearch?: boolean;
+}
+
+const Header = ({ showSearch = false }: HeaderProps) => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const { totalItems, setIsCartOpen } = useCart();
 
@@ -21,13 +25,15 @@ const Header = () => {
             </Link>
 
             <div className="flex items-center gap-2 md:gap-4">
-              <button
-                onClick={() => setIsSearchOpen(true)}
-                className="p-2 text-foreground hover:text-primary transition-colors"
-                aria-label="Search"
-              >
-                <Search size={20} />
-              </button>
+              {showSearch && (
+                <button
+                  onClick={() => setIsSearchOpen(true)}
+                  className="p-2 text-foreground hover:text-primary transition-colors"
+                  aria-label="Search"
+                >
+                  <Search size={20} />
+                </button>
+              )}
               <LanguageSelector />
               <Link to="/login" className="hidden md:flex p-2 text-foreground hover:text-primary transition-colors" aria-label="Account">
                 <User size={20} />
