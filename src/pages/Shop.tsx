@@ -23,7 +23,7 @@ const Shop = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Header />
+      <Header showSearch />
       <main className="pt-20">
         <div className="flex flex-col lg:flex-row">
           <aside className={`w-full lg:w-64 bg-card border-r border-border p-6 lg:sticky lg:top-20 lg:h-[calc(100vh-5rem)] overflow-y-auto transition-all duration-300 ${isSidebarOpen ? "block" : "hidden lg:block"}`}>
