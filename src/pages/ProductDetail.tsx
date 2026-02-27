@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import { ArrowLeft, Heart, Minus, Plus, ShoppingBag, Star } from "lucide-react";
+import { ArrowLeft, Heart, Minus, Plus, Share2, ShoppingBag, Star } from "lucide-react";
+import { toast } from "sonner";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { allProducts } from "@/data/products";
 import { useCart } from "@/context/CartContext";
 import { useLanguage } from "@/i18n/LanguageContext";
+import { shareProduct } from "@/lib/share";
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -214,14 +216,23 @@ const ProductDetail = () => {
                 </button>
               </div>
 
-              {/* Back */}
-              <button
-                onClick={() => navigate(-1)}
-                className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors font-sans mt-4"
-              >
-                <ArrowLeft size={16} />
-                {t("product.backToShop")}
-              </button>
+              {/* Share + Back */}
+              <div className="flex items-center gap-4 mt-4">
+                <button
+                  onClick={() => shareProduct(product.id, product.name).then(() => toast(t("product.shared")))}
+                  className="flex items-center gap-2 px-5 py-3 border border-border text-sm font-sans text-muted-foreground hover:border-primary hover:text-primary transition-colors"
+                >
+                  <Share2 size={16} />
+                  {t("product.share")}
+                </button>
+                <button
+                  onClick={() => navigate(-1)}
+                  className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors font-sans"
+                >
+                  <ArrowLeft size={16} />
+                  {t("product.backToShop")}
+                </button>
+              </div>
             </div>
           </div>
 
